@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,8 +27,10 @@ public class User implements UserDetails {
 	private String name;
 	
 	@Column(unique = true)
-
-	private String contactdetail;
+	private String email;
+	@NotNull
+	private String mobileno;
+	@NotNull
 	private String password;
 	@Column(name = "User_type", nullable = false)
 	private String type;
@@ -42,11 +46,18 @@ public class User implements UserDetails {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getContactdetail() {
-		return contactdetail;
+	
+	public String getEmail() {
+		return email;
 	}
-	public void setContactdetail(String contactdetail) {
-		this.contactdetail = contactdetail;
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getMobileno() {
+		return mobileno;
+	}
+	public void setMobileno(String mobileno) {
+		this.mobileno = mobileno;
 	}
 	public String getPassword() {
 		return password;
@@ -71,7 +82,7 @@ public class User implements UserDetails {
 	}
 	@Override
 	public String getUsername() {
-		return this.contactdetail;
+		return this.email;
 	}
 
 	@Override

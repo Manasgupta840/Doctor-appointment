@@ -10,5 +10,5 @@ import com.doctor.appointment.models.User;
 public interface UserRepo extends JpaRepository<User, Integer> {
 	
 	
-	Optional<User> findBycontactdetail(String contactdetail);
+	Optional<User> findByemail(String contactdetail);
 } 

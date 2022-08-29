@@ -30,7 +30,8 @@ public class UserService {
 		User customer = this.userRepo.findById(userId).orElseThrow(()-> new ResourceNotFoundException("User","Id",userId));
 		
 		customer.setName(user.getName());
-		customer.setContactdetail(user.getContactdetail());
+		customer.setEmail(user.getEmail());
+		customer.setMobileno(user.getMobileno());
 		customer.setPassword(this.passwordEncoder.encode(user.getPassword()));
 		
 		
