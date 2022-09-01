@@ -65,7 +65,7 @@ public class HospitalService {
 		
 		User doctor = this.userRepo.findById(doctorId).orElseThrow(()-> new ResourceNotFoundException("User","User id", doctorId)); 
 		
-		List<Hospital> hospitals = this.hospitalRepo.findByDoctor(doctor);
+		List<Hospital> hospitals = this.hospitalRepo.findByUser(doctor);
 		
 		return hospitals;
 		

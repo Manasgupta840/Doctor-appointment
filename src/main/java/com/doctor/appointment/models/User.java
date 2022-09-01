@@ -12,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -115,5 +117,23 @@ public class User implements UserDetails {
 	@OneToMany(mappedBy = "user", cascade =CascadeType.ALL,fetch = FetchType.LAZY)
 	private List<Hospital> hospital = new ArrayList<>();
 	
+	
+	public List<Hospital> getHospital() {
+		return hospital;
+	}
+	public void setHospital(List<Hospital> hospital) {
+		this.hospital = hospital;
+	}
+	public DoctorInfo getDoctorInfo() {
+		return doctorInfo;
+	}
+	public void setDoctorInfo(DoctorInfo doctorInfo) {
+		this.doctorInfo = doctorInfo;
+	}
+
+	@OneToOne
+	(mappedBy = "user", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private DoctorInfo doctorInfo;
 
 }
