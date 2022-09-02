@@ -34,8 +34,9 @@ public class HospitalController {
 	public ResponseEntity<Hospital> createhospital(@Valid @RequestBody Hospital hospital, @PathVariable("doctorId") Integer doctorId){
 		
 		Hospital createdhospital = this.hospitalservice.createHospital(hospital,doctorId );
+		System.out.println(createdhospital.getLocation());
 		
-		return new ResponseEntity<>(createdhospital, HttpStatus.CREATED);
+		return new ResponseEntity<Hospital>(createdhospital, HttpStatus.CREATED);
 	}
 	
 	//Put - Update hospital
@@ -44,7 +45,7 @@ public class HospitalController {
 			
 			Hospital updatedhospital = this.hospitalservice.updateHospital(hospital, hospitalId);
 			
-			return new ResponseEntity<>(updatedhospital, HttpStatus.CREATED);
+			return new ResponseEntity<>(updatedhospital, HttpStatus.OK);
 	}
 	
 	//Get Hospital by Id

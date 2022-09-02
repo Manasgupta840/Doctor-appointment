@@ -33,6 +33,7 @@ public class UserService {
 		customer.setEmail(user.getEmail());
 		customer.setMobileno(user.getMobileno());
 		customer.setPassword(this.passwordEncoder.encode(user.getPassword()));
+		customer.setType(user.getType());
 		
 		
 		User updatedCustomer = this.userRepo.save(customer);

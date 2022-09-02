@@ -24,7 +24,7 @@ public class DoctorInfoService {
 	public DoctorInfo createDoctorInfo(DoctorInfo doctorInfo, Integer doctorId) {
 		User doctor = this.userRepo.findById(doctorId).orElseThrow(()-> new ResourceNotFoundException("User","User id", doctorId)); 		
 		doctorInfo.setUser(doctor);
-		doctorInfo.setImageName("default.jpg");
+//		doctorInfo.setImageName("default.jpg");
 		
 		DoctorInfo newinfo = this.doctorInfoRepo.save(doctorInfo);
 		

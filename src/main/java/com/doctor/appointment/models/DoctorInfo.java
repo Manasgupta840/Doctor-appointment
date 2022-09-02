@@ -11,8 +11,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "Doctor_Info")
+@JsonIgnoreProperties
 public class DoctorInfo {
 	
 	@Id
@@ -33,17 +37,10 @@ public class DoctorInfo {
 	
 	@Column(name="Sun")
 	private String sundayTime;
-	
-
-	
-	
 
 	public int getId() {
 		return id;
 	}
-
-
-
 
 	public void setId(int id) {
 		this.id = id;
@@ -141,9 +138,8 @@ public class DoctorInfo {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
+	@JsonBackReference
 	@OneToOne
-	@MapsId
     @JoinColumn(name = "doctor_id")
     private User user;
 

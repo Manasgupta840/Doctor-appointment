@@ -21,6 +21,8 @@ import javax.validation.constraints.NotNull;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 
 @Entity
@@ -113,9 +115,13 @@ public class User implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
-	
+	@JsonManagedReference
 	@OneToMany(mappedBy = "user", cascade =CascadeType.ALL,fetch = FetchType.LAZY)
 	private List<Hospital> hospital = new ArrayList<>();
+	
+	@JsonManagedReference
+	@OneToMany(mappedBy = "user", cascade =CascadeType.ALL,fetch = FetchType.LAZY)
+	private List<Specialization> specialization = new ArrayList<>();
 	
 	
 	public List<Hospital> getHospital() {
@@ -131,6 +137,7 @@ public class User implements UserDetails {
 		this.doctorInfo = doctorInfo;
 	}
 
+	@JsonManagedReference
 	@OneToOne
 	(mappedBy = "user", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn

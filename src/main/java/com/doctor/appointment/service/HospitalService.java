@@ -25,11 +25,11 @@ public class HospitalService {
 	
 	public Hospital createHospital(Hospital hospital,Integer userId) {
 		
-		User doctor = this.userRepo.findById(userId).orElseThrow(()-> new ResourceNotFoundException("User","User id", userId)); 		
+		User doctor = this.userRepo.findById(userId).orElseThrow(()-> new ResourceNotFoundException("User","User id", userId)); 
+		System.out.println(hospital.getLocation());
 		hospital.setUser(doctor);
 		
-		Hospital newhospital = this.hospitalRepo.save(hospital);
-	   return newhospital;
+		return this.hospitalRepo.save(hospital);
 	}
 	
 	public Hospital updateHospital(Hospital hospital , Integer hospitalId) {

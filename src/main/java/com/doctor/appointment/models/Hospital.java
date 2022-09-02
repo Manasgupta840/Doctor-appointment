@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 
 @Entity
 @Table(name = "Hospital_List")
@@ -24,11 +26,12 @@ public class Hospital {
 	
 	@Column
 	private String city;
-	@NotNull
-	private String Location;
+	
+	private String location;
 	@NotNull
 	private String landmark;
 
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name="Doctor_id")
 	private User user;
@@ -58,11 +61,11 @@ public class Hospital {
 	}
 
 	public String getLocation() {
-		return Location;
+		return location;
 	}
 
 	public void setLocation(String location) {
-		Location = location;
+		this.location = location;
 	}
 
 	public String getLandmark() {
